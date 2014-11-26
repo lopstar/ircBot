@@ -31,7 +31,7 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#129#130#0" expanded="true" />
-                <element signature="e#165#166#0" expanded="true" />
+                <element signature="e#168#169#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -392,12 +392,12 @@
       <updated>1416967418837</updated>
       <workItem from="1416967423561" duration="226000" />
       <workItem from="1416967665219" duration="2247000" />
-      <workItem from="1416969964156" duration="147000" />
+      <workItem from="1416969964156" duration="774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2620000" />
+    <option name="totallyTimeSpent" value="3247000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -420,7 +420,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1040" extended-state="1" />
+    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -482,7 +482,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#129#130#0" expanded="true" />
-            <element signature="e#165#166#0" expanded="true" />
+            <element signature="e#168#169#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -510,7 +510,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#129#130#0" expanded="true" />
-            <element signature="e#165#166#0" expanded="true" />
+            <element signature="e#168#169#0" expanded="true" />
           </folding>
         </state>
       </provider>
