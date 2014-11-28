@@ -9,9 +9,11 @@
 
         public MyBot() {
             this.setName("KannBot");
+            this.setLogin("lopstar");
+
         }
 
-
+        // added a time function to check the time.
         public void onMessage(String channel, String sender, String login, String hostname, String message) {
             if(message.equalsIgnoreCase("!time")) {
                 String time = new Date().toString();
@@ -19,10 +21,17 @@
 
             }
         }
-
+        // welcomes who ever joins the channel.
         public void onJoin(String channel, String sender, String login, String hostname) {
-            sendMessage(channel, "Welcome to " +channel+", "+sender); // welcomes who ever joins the channel.
+            sendMessage(channel, "Welcome to " +channel+", "+sender);
 
         }
+        /* Trying to get the bot to authenticate and after hide it's hostmask, but having some problems.
 
+        public void onConnect(){
+            sendRawLine("/msg Q auth lopstar m87V!yJxSY");
+            sendRawLine("/mode KannBot +x");
+        }
+        */
     }
+
