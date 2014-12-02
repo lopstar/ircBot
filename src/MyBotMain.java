@@ -18,8 +18,5 @@
 
             // Join the #pircbot channel.
             bot.joinChannel("#lopstar");
-
-
-
         }
     }
