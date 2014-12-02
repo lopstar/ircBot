@@ -13,25 +13,32 @@
 
         }
 
+        public boolean isOp(String username){
+            if(username.startsWith("@")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         //Service commands
         public void onMessage(String channel, String sender, String login, String hostname, String message) {
-           //Checking time
+            //Checking time
             if (message.equalsIgnoreCase("!time")) {
                 String time = new Date().toString();
                 sendMessage(channel, sender + ": The time is now " + time);
             }
             //Checking uptime
-            if(message.equalsIgnoreCase("!uptime")) {
-                sendMessage(channel, "The bot has been online for: " +RPL_STATSUPTIME /60 +" seconds");
+            if (message.equalsIgnoreCase("!uptime")) {
+                sendMessage(channel, "The bot has been online for: " + RPL_STATSUPTIME / 60 + " seconds");
             }
             //Cheking amount of time
-            if(message.equalsIgnoreCase("!users")) {
+            if (message.equalsIgnoreCase("!users")) {
                 int totalUsersOnline = getUsers(channel).length;
-                sendMessage(channel, "Users in channel is: " +totalUsersOnline );
+                sendMessage(channel, "Users in channel is: " + totalUsersOnline);
             }
         }
-
-
+        
         // Functions when people joins the channel.
         public void onJoin(String channel, String sender, String login, String hostname) {
             //welcomes people.
