@@ -1,7 +1,6 @@
     /**
      * Created by kann on 26-11-2014.
      */
-    import org.jibble.pircbot.*;
 
     public class MyBotMain {
 
@@ -19,4 +18,6 @@
             // Join the #pircbot channel.
             bot.joinChannel("#lopstar");
         }
+
+
     }

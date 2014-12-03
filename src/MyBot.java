@@ -3,10 +3,16 @@
      */
     import org.jibble.pircbot.*;
 
+
+    import java.io.FileInputStream;
+    import java.io.IOException;
     import java.security.SecureRandom;
     import java.util.Date;
+    import java.util.Properties;
+
 
     public class MyBot extends PircBot {
+        Properties authConfig = new Properties();
 
         public MyBot() {
             this.setName("KannBot");
@@ -45,25 +51,31 @@
             }
         }
 
+        /*
+        Added a half-way solution to my auth and mode problems. Now i need to make a login system
+        So it's only users who are logged in, that can use these commands.
+        -The auth is only used for testing, so stealing it will not give you much :)
+         */
+        public void onPrivateMessage(String sender, String login, String hostname, String message){
+            if(message.equalsIgnoreCase("!auth" )){
+                String Q =  "Q@CServe.quakenet.org";
+                sendMessage(Q,"AUTH Kann b2NVRQiRty");
+            }
+            if(message.equalsIgnoreCase("!mode")){
+                setMode(getName(), "+x");
+            }
+        }
+
+
         // Functions when people joins the channel.
         public void onJoin(String channel, String sender, String login, String hostname) {
             //welcomes people.
             sendMessage(channel, "Welcome to " +channel+", "+sender);
             //Gives voice to all
             voice(channel, hostname);
-            /*
-            Working on this...  It should only give OP to the admins with the correct auth on quakenet
-             But at the moment i can't get this authentication process to work, so it only gives OP to usernames
-             */
-            op(channel, "lopstar1");
 
         }
-        /* Trying to get the bot to authenticate and after hide it's hostmask, but having some problems.
 
-        public void onConnect(){
-            sendRawLine("/msg Q auth lopstar m87V!yJxSY");
-            sendRawLine("/mode KannBot +x");
-        }
-        */
     }
+
 
