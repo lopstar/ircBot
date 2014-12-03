@@ -3,7 +3,8 @@
      */
     import org.jibble.pircbot.*;
 
-            import java.util.Date;
+    import java.security.SecureRandom;
+    import java.util.Date;
 
     public class MyBot extends PircBot {
 
@@ -12,7 +13,7 @@
             this.setLogin("lopstar");
 
         }
-
+        //Checking if the user is operator
         public boolean isOp(String username){
             if(username.startsWith("@")) {
                 return true;
@@ -37,15 +38,23 @@
                 int totalUsersOnline = getUsers(channel).length;
                 sendMessage(channel, "Users in channel is: " + totalUsersOnline);
             }
+            //Tells really bad danish jokes from phrases class.
+            if(message.equalsIgnoreCase("!joke")){
+                SecureRandom random = new SecureRandom();
+                sendMessage(channel, phrases.jokePhrases[random.nextInt(phrases.jokePhrases.length)]);
+            }
         }
-        
+
         // Functions when people joins the channel.
         public void onJoin(String channel, String sender, String login, String hostname) {
             //welcomes people.
             sendMessage(channel, "Welcome to " +channel+", "+sender);
             //Gives voice to all
             voice(channel, hostname);
-            //Working on this by it only should give op to the admins with the correct auth on quakenet.
+            /*
+            Working on this...  It should only give OP to the admins with the correct auth on quakenet
+             But at the moment i can't get this authentication process to work, so it only gives OP to usernames
+             */
             op(channel, "lopstar1");
 
         }
