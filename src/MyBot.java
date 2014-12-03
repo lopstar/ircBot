@@ -3,16 +3,15 @@
      */
     import org.jibble.pircbot.*;
 
-
-    import java.io.FileInputStream;
-    import java.io.IOException;
     import java.security.SecureRandom;
     import java.util.Date;
-    import java.util.Properties;
+    
 
 
     public class MyBot extends PircBot {
-        Properties authConfig = new Properties();
+     private String AUTH_name = "lopstar";
+        private String password ="password";
+        private String controller ="";
 
         public MyBot() {
             this.setName("KannBot");
@@ -52,17 +51,27 @@
         }
 
         /*
-        Added a half-way solution to my auth and mode problems. Now i need to make a login system
-        So it's only users who are logged in, that can use these commands.
-        -The auth is only used for testing, so stealing it will not give you much :)
+        Added a half-way solution to my auth and mode problems. Trying to figure out a better solution
+        Right now the login works, but if you write something wrong in the login, it will post all else if messages.
          */
-        public void onPrivateMessage(String sender, String login, String hostname, String message){
-            if(message.equalsIgnoreCase("!auth" )){
-                String Q =  "Q@CServe.quakenet.org";
-                sendMessage(Q,"AUTH Kann b2NVRQiRty");
+        protected void onPrivateMessage(String sender, String login, String hostname, String message) {
+            String Q = "Q@CServe.quakenet.org";
+            if (message.equals("!login " + AUTH_name + " " + password)) {
+                controller = sender;
+                sendMessage(sender, "You are now logged in");
+            } else if (controller.isEmpty()) {
+                sendMessage(sender, "Wrong username or password, try again");
             }
-            if(message.equalsIgnoreCase("!mode")){
+
+            if (message.equals("!auth") && controller.equals(sender)) {
+                sendMessage(Q, "AUTH Kann b2NVRQiRty");
+            }
+
+            if (message.equalsIgnoreCase("!mode") && controller.equals(sender)) {
                 setMode(getName(), "+x");
+            } else if (controller.isEmpty()) {
+                sendMessage(sender, "You must be logged in to use this command");
+
             }
         }
 
