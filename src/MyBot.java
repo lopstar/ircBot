@@ -6,8 +6,6 @@
     import java.security.SecureRandom;
     import java.util.Date;
 
-
-
     public class MyBot extends PircBot {
      private String AUTH_name = "lopstar";
         private String password ="password";
