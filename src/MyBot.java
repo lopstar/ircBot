@@ -5,7 +5,7 @@
 
     import java.security.SecureRandom;
     import java.util.Date;
-    
+
 
 
     public class MyBot extends PircBot {
@@ -51,27 +51,34 @@
         }
 
         /*
-        Added a half-way solution to my auth and mode problems. Trying to figure out a better solution
-        Right now the login works, but if you write something wrong in the login, it will post all else if messages.
+            A private message system, where you only can use the commands if you are logged in with an auth name and password.
          */
         protected void onPrivateMessage(String sender, String login, String hostname, String message) {
+            //Quakenet IdentServer
             String Q = "Q@CServe.quakenet.org";
-            if (message.equals("!login " + AUTH_name + " " + password)) {
-                controller = sender;
-                sendMessage(sender, "You are now logged in");
-            } else if (controller.isEmpty()) {
-                sendMessage(sender, "Wrong username or password, try again");
-            }
+            //Login function
+            if( message.startsWith("!login")) {
+                if (message.equals("!login " + AUTH_name + " " + password)) {
+                    controller = sender;
+                    sendMessage(sender, "You are now logged in");
+                } else if (controller.isEmpty()) {
+                    sendMessage(sender, "Wrong username or password, try again");
+                }
+                //Authentication with quakenet for the bot.
+            } else if( message.startsWith("!auth")) {
+                if (message.equals("!auth") && controller.equals(sender)) {
+                    sendMessage(Q, "AUTH Kann b2NVRQiRty");
+                } else if(controller.isEmpty()) {
+                    sendMessage(sender, "You must be logged in to use this command");
+                }
+                //Function for hide the hostmask for the bot.
+            } else if( message.startsWith("!mode")) {
+                if (message.equalsIgnoreCase("!mode") && controller.equals(sender)) {
+                    setMode(getName(), "+x");
+                } else if (controller.isEmpty()) {
+                    sendMessage(sender, "You must be logged in to use this command");
 
-            if (message.equals("!auth") && controller.equals(sender)) {
-                sendMessage(Q, "AUTH Kann b2NVRQiRty");
-            }
-
-            if (message.equalsIgnoreCase("!mode") && controller.equals(sender)) {
-                setMode(getName(), "+x");
-            } else if (controller.isEmpty()) {
-                sendMessage(sender, "You must be logged in to use this command");
-
+                }
             }
         }
 
