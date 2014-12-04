@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/pircbot.iml" filepath="$PROJECT_DIR$/pircbot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ircBot.iml" filepath="$PROJECT_DIR$/ircBot.iml" />
     </modules>
   </component>
 </project>
-
