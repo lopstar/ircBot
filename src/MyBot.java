@@ -12,7 +12,6 @@
      private String AUTH_name = "lopstar";
         private String password ="password";
         private String controller ="";
-        private String topic ="";
 
         public MyBot() {
             this.setName("KannBot");
@@ -84,7 +83,7 @@
         }
 
 
-        // Function when people join the channel.
+        //Function that reacts when people join the channel
         public void onJoin(String channel, String sender, String login, String hostname) {
             //welcomes people.
             sendMessage(channel, "Welcome to " +channel+", "+sender);
