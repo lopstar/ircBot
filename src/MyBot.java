@@ -12,6 +12,7 @@
      private String AUTH_name = "lopstar";
         private String password ="password";
         private String controller ="";
+        private String topic ="";
 
         public MyBot() {
             this.setName("KannBot");
@@ -53,7 +54,7 @@
         /*
             A private message system, where you only can use the commands if you are logged in with an auth name and password.
          */
-        protected void onPrivateMessage(String sender, String login, String hostname, String message) {
+        public void onPrivateMessage(String sender, String login, String hostname, String message) {
             //Quakenet IdentServer
             String Q = "Q@CServe.quakenet.org";
             //Login function
@@ -83,7 +84,7 @@
         }
 
 
-        // Functions when people joins the channel.
+        // Function when people join the channel.
         public void onJoin(String channel, String sender, String login, String hostname) {
             //welcomes people.
             sendMessage(channel, "Welcome to " +channel+", "+sender);
