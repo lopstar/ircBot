@@ -13,10 +13,12 @@
 
         public MyBot() {
             this.setName("KannBot");
-            this.setLogin("lopstar");
 
         }
-        //Checking if the user is operator
+
+        /*
+        Checking if the user is operator
+         */
         public boolean isOp(String username){
             if(username.startsWith("@")) {
                 return true;
@@ -25,7 +27,9 @@
             }
         }
 
-        //Service commands
+        /*
+        Service commands
+         */
         public void onMessage(String channel, String sender, String login, String hostname, String message) {
             //Checking time
             if (message.equalsIgnoreCase("!time")) {
@@ -42,9 +46,25 @@
                 sendMessage(channel, "Users in channel is: " + totalUsersOnline);
             }
             //Tells really bad danish jokes from phrases class.
-            if(message.equalsIgnoreCase("!joke")){
+            if (message.equalsIgnoreCase("!joke")) {
                 SecureRandom random = new SecureRandom();
                 sendMessage(channel, phrases.jokePhrases[random.nextInt(phrases.jokePhrases.length)]);
+            }
+            //Just a fun !drink command. Need to modify it, so you can write !drink $user, and give other person drinks.
+            if (message.equals("!drink")) {
+                SecureRandom random = new SecureRandom();
+                int sips = random.nextInt(15) + 1;
+                if (sips > 1 && sips < 14) {
+                    sendMessage(channel, sender + " skal drikke " + sips + " slurke");
+                } else {
+                    if (sips == 14) {
+                        sendMessage(channel, sender + " skal bunde en øl");
+                    } else {
+                        if(sips == 1 ) {
+                            sendMessage(channel, sender + " skal drikke en slurk");
+                        }
+                    }
+                }
             }
         }
 
@@ -81,7 +101,9 @@
         }
 
 
-        //Function that reacts when people join the channel
+        /*
+        Function that reacts when people join the channel
+         */
         public void onJoin(String channel, String sender, String login, String hostname) {
             //welcomes people.
             sendMessage(channel, "Welcome to " +channel+", "+sender);
@@ -89,7 +111,8 @@
             voice(channel, hostname);
 
         }
-
     }
+
+
 
 
